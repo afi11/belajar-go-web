@@ -20,6 +20,9 @@ func main() {
 	http.HandleFunc("/index", handlerIndex)
 	http.HandleFunc("/hello", handlerHello)
 
+	// 2. Routing Static Assets
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("assets"))))
+
 	var address = "localhost:9000"
 	fmt.Printf("server started at %s\n", address)
 	err := http.ListenAndServe(address, nil)
