@@ -21,6 +21,19 @@ func handlerHello(w http.ResponseWriter, r *http.Request) {
 // Tambah untuk step 4
 type M map[string]interface{}
 
+// Tambah untuk step 5
+type Info struct {
+	Affiliation string
+	Address     string
+}
+
+type Person struct {
+	Name    string
+	Gender  string
+	Hobbies []string
+	Info    Info
+}
+
 func main() {
 	// http.HandleFunc("/", handlerIndex)
 	// http.HandleFunc("/index", handlerIndex)

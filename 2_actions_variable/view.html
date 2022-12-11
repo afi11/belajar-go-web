@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Learning html/template Actions</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <!-- Pipeline Output & Komentar
+ -->
+                {{/* example how to use actions */}}
+                <td>{{"Name"}}</td>
+                <td>: {{.Name}}</td>
+            </tr>
+            <tr><td>Gender</td>
+                <!-- Menampung ke variable $gender -->
+                {{$gender := .Gender }}
+                <td style="text-transform: capitalize;">:{{$gender}}</td>
+            </tr>
+            <tr>
+                <!-- Perulangan -->
+                <td>Hobbies</td>
+                <td>: 
+                    {{ range $index, $elem := .Hobbies }}
+                        {{ $elem }}
+                    {{ end }}
+                </td>
+            </tr>
+            <tr>
+                <td>Affiliation</td>
+                <!-- Akses Method -->
+                <td>: {{.Info.Affiliation}} ({{.Info.GetAffiliationDetailInfo}})</td>
+            </tr>
+            <!--  Penggunaan Keyword with Untuk Mengganti Scope Variabel Pada Suatu Blok -->
+            {{ with .Info }}
+            <tr>
+                <td>Address</td>
+                <td>: {{.Address}}</td>
+            </tr>
+            {{ end }}
+            <!-- Percabangan -->
+            {{ if eq .Name "Mukidi" }}
+            <tr>
+                <td colspan="2" style="font-weight: bold;">
+                    I'm the Batman!
+                </td>
+            </tr>
+            {{ end }}
+        </table>
+    </body>
+</html>
